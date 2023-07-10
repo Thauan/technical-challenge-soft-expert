@@ -13,9 +13,12 @@ export const productSlice = createSlice({
         onErrorProducts: (state) => {
             state.error = true;
         },
+        onUpdateListProducts: (state: any, action: any) => {
+            state.products = [...state, action.payload]
+        }
     },
 });
 
-export const { onSuccessProducts, onErrorProducts } = productSlice.actions
+export const { onSuccessProducts, onErrorProducts, onUpdateListProducts } = productSlice.actions
 
 export default productSlice.reducer

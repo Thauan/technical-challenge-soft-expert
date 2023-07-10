@@ -26,7 +26,6 @@ type FormData = {
   name: string;
   email: string;
   password: string;
-  permission_newsletter?: any;
 }
 
 const useStyles = makeStyles((theme: any) => ({

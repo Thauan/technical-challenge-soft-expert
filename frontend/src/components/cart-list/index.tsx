@@ -1,9 +1,8 @@
-import { Box, Drawer, Typography } from '@mui/material';
 import React from 'react';
+import { Box, Drawer, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer } from '../../features/cart/cartSlice';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import { FormattedNumber } from 'react-intl';
 
 const CartList: React.FC = () => {
     const dispatch = useDispatch();
@@ -15,7 +14,6 @@ const CartList: React.FC = () => {
             open={openDrawer}
             onClose={() => dispatch(toggleDrawer())}
             anchor='right'
-            onBackdropClick={() => dispatch(toggleDrawer())}
             PaperProps={{
                 sx: {
                     width: 500,
@@ -54,16 +52,17 @@ const CartList: React.FC = () => {
                                         Name: {product.name}
                                     </Typography>
                                     <Typography color="black">
-                                        Price: {product.price}
+                                        Price: <FormattedNumber value={product.price} style={`currency`} currency="USD" />
                                     </Typography>
                                     <Typography color="black">
-                                        Quantity: {product.quantity}
+                                        Tax: <FormattedNumber value={product.tax} style={`currency`} currency="USD" />
                                     </Typography>
                                     <Typography color="black">
-                                        Tax: {product.tax}
+                                        Quantity in Stock: {product.quantity}
                                     </Typography>
-                                    <AddIcon />
-                                    <RemoveIcon />
+                                    <Typography variant="h6" color="black">
+                                        <FormattedNumber value={product.tax * product.price} style={`currency`} currency="USD" />
+                                    </Typography>
                                 </Box>
                             )
                         })}

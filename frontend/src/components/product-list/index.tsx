@@ -10,7 +10,6 @@ import { addToCart } from '../../features/cart/cartSlice';
 
 const ProductList: React.FC = () => {
   const products = useSelector((state: any) => state.products.products);
-  const cart = useSelector((state: any) => state.cart.cart);
   const dispatch = useDispatch();
 
   const columns: GridColDef[] = [

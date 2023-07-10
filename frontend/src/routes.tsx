@@ -1,10 +1,11 @@
 import React from 'react';
 import { Routes as Router, BrowserRouter, Route } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import { SignIn } from './pages/SignIn';
 import { SignUp } from './pages/SignUp';
 import { Dashboard } from './pages/Dashboard';
+import { ProductCreate } from './pages/ProductCreate';
 import { ProtectedRoute } from './utils/protected-route';
-import { useSelector } from 'react-redux';
 
 const Routes: React.FC = () => {
   const isLogged = useSelector((state: any) => state.user.logged);
@@ -21,6 +22,11 @@ const Routes: React.FC = () => {
     {
       path: '/dashboard',
       element: <Dashboard />,
+      protected: true,
+    },
+    {
+      path: '/products/create',
+      element: <ProductCreate />,
       protected: true,
     }
   ];
