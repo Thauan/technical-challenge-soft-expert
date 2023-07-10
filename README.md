@@ -100,7 +100,6 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 * PHP 8.1
 * React
 * Material UI
-* Amazon S3
 
 ## Contribuição
 Contribuições são bem-vindas! Se você encontrar algum bug ou tiver alguma ideia para melhorar o projeto, por favor, abra uma issue ou submeta um pull request.
