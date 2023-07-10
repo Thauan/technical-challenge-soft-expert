@@ -23,8 +23,8 @@ return
             'host' => 'localhost',
             'name' => 'php_mvc',
             'user' => 'postgres',
-            'pass' => 'root@2023',
-            'port' => '5432',
+            'pass' => 'root',
+            'port' => '5632',
             'charset' => 'utf8',
         ],
         'testing' => [
@@ -32,8 +32,8 @@ return
             'host' => 'localhost',
             'name' => 'php_mvc_test',
             'user' => 'postgres',
-            'pass' => 'root@2023',
-            'port' => '5432',
+            'pass' => 'root',
+            'port' => '5632',
             'charset' => 'utf8',
         ]
     ],

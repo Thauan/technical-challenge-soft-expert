@@ -16,14 +16,14 @@ class RegisterTest extends TestCase
         $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__), $envFile);
         $dotenv->load();
 
-        $this->db = new Database(array(
+        $this->db = new Database([
             'engine' => $_ENV['DATABASE_ENGINE'],
             'database' => $_ENV['DATABASE_NAME'],
             'port' => $_ENV['DATABASE_PORT'],
             'host' => $_ENV['DATABASE_HOST'],
             'user' => $_ENV['DATABASE_USER'],
             'password' => $_ENV['DATABASE_PASSWORD']
-        ));
+        ]);
 
         $user = new User();
 

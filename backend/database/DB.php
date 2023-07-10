@@ -22,7 +22,11 @@ class Database
       try {
         $config = $this->config;
 
-        $dsn = $config['engine'].':dbname='.$config['database'].';host='.$config['host'].';';
+        if(getenv('APP_ENV') === 'test') {
+          $dsn = $config['engine'].':dbname='.$config['database'].';port='.$config['port'].';host='.$config['host'].';';
+        } else {
+          $dsn = $config['engine'].':dbname='.$config['database'].';host='.$config['host'].';';
+        }
 
         $this->pdo = new PDO($dsn, $config['user'], $config['password']);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

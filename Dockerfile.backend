@@ -1,25 +1,8 @@
-FROM php:8.1-apache
+FROM php:8-fpm
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    libzip-dev \
-    unzip \
-    && docker-php-ext-install zip pdo_mysql
+RUN apt-get update
 
-# Enable Apache rewrite module
-RUN a2enmod rewrite
-
-# Set the document root to Laravel's public directory
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-
-# Copy the application files to the container
-COPY ./backend/ /var/www/html/
-
-EXPOSE 80
-
-# Set the working directory
-WORKDIR /var/www/html
-
-RUN echo "ServerName 172.24.0.2" >> /etc/apache2/apache2.conf
-
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
