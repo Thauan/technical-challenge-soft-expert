@@ -9,12 +9,17 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useSelector } from 'react-redux';
-
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearItem } from '../../utils/local-storage';
+import { useNavigate } from 'react-router-dom';
+import { toggleDrawer } from '../../features/cart/cartSlice';
 
 function ResponsiveAppBar() {
-  const user = useSelector((state: any) => state.user.user)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user.user);
+  const cart = useSelector((state: any) => state.cart.cart);
 
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -24,6 +29,15 @@ function ResponsiveAppBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleOpenDrawer = () => {
+    dispatch(toggleDrawer())
+  };
+
+  const handleLogout = () => {
+    clearItem("user");
+    navigate('/');
   };
 
   return (
@@ -69,6 +83,28 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           </Box>
 
+          <Box sx={{ flexGrow: 0, marginRight: 2 }}>
+            <IconButton onClick={handleOpenDrawer} sx={{ p: 0 }}>
+              <span style={{
+                position: 'absolute',
+                background: 'red',
+                borderRadius: 50,
+                width: 15,
+                height: 15,
+                right: '19px',
+                top: '-9px',
+                fontSize: '12px',
+                color: 'white',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                {cart.length}
+              </span>
+              <ShoppingCartIcon />
+            </IconButton>
+          </Box>
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -91,11 +127,9 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleLogout}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

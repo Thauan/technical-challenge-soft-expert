@@ -67,7 +67,6 @@ function FormSignUp({ signUp, isLoading }: any) {
   });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data, "data");
     signUp(data);
   });
 
@@ -152,19 +151,6 @@ function FormSignUp({ signUp, isLoading }: any) {
                 )}
                 name="password"
               />
-            </Grid>
-            <Grid item xs={12}>
-              <Controller
-                control={control}
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <FormControlLabel
-                    control={<Checkbox onChange={onChange} onBlur={onBlur} value={value} color="primary" />}
-                    label="I want to receive inspiration, marketing promotions and updates via email."
-                  />
-                )}
-                name="permission_newsletter"
-              />
-
             </Grid>
           </Grid>
           <Button

@@ -15,7 +15,7 @@ class ProductsController extends Controller
 
         $response = $products->all();
 
-        return Response::json($response);
+        return Response::json($response, $response['status']);
     }
 
     public function products_create()
@@ -25,6 +25,6 @@ class ProductsController extends Controller
 
         $response = $products->create($attributes);
 
-        return Response::json($response);
+        return Response::json($response, $response['status']);
     }
 }

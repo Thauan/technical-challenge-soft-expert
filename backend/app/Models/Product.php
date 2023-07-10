@@ -33,11 +33,13 @@ class Product extends Model
 
     if(isset($products)) {
         $response['data']['products'] = $products;
+        $response['status'] = 200;
 
         return $response;
     } else {
         $response['error'] = true;
         $response['message'] = "Não há produtos";
+        $response['status'] = 404;
 
         return $response;
     }
@@ -67,6 +69,7 @@ class Product extends Model
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $response['data'] = $result;
+        $response['status'] = 200;
 
     return $response;
   }
