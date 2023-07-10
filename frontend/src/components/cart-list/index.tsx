@@ -10,7 +10,6 @@ const CartList: React.FC = () => {
     const cart = useSelector((state: any) => state.cart.cart);
     const openDrawer = useSelector((state: any) => state.cart.openDrawer);
 
-    console.log(cart);
     return (
         <Drawer
             open={openDrawer}
