@@ -1,1 +1,0 @@
-# php-mvc-boilerplate

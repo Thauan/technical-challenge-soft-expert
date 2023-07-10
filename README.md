@@ -86,6 +86,7 @@ APP_ENV=test ./vendor/bin/phpunit
 ```
 
 11. Acessar os endpoints já deve estar funcionando:
+
 Backend
 ```bash
 http://localhost:8080
@@ -94,7 +95,6 @@ Frontend
 ```bash
 http://localhost:3000
 ```
-
 
 ## Funcionalidades
 
