@@ -17,7 +17,7 @@ class AuthController extends Controller
         $response = $user->login($attributes['email'],
                                  $attributes['password']);
 
-        return Response::json($response);
+        return Response::json($response, $response['status']);
     }
 
     public function register()
@@ -27,6 +27,6 @@ class AuthController extends Controller
 
         $response = $user->register($attributes);
 
-        return Response::json($response);
+        return Response::json($response, $response['status']);
     }
 }

@@ -58,7 +58,8 @@ class RegisterTest extends TestCase
         $this->assertEquals(
             [
                 'error' => true,
-                'message' => "Usuario inexistente ou senha invalida"
+                'message' => "Usuario inexistente ou senha invalida",
+                'status' => 404
             ],
             $response
         );

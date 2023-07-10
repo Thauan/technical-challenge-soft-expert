@@ -60,17 +60,20 @@ class User extends Model
 
         $response['data'] = $result;
         $response['data']['token'] = $token;
+        $response['status'] = 200;
 
         return $response;
       } else {
         $response['error'] = true;
         $response['message'] = "Usuario inexistente ou senha invalida";
+        $response['status'] = 404;
 
         return $response;
       }
     } else {
       $response['error'] = true;
       $response['message'] = "Usuario inexistente ou senha invalida";
+      $response['status'] = 404;
 
       return $response;
     }
@@ -127,12 +130,14 @@ class User extends Model
 
       $response['data'] = $result;
       $response['data']['token'] = $token;
+      $response['status'] = 200;
 
       return $response;
 
     } else {
       $response['error'] = true;
       $response['message'] = "Usuario inexistente ou senha invalida";
+      $response['status'] = 404;
 
       return $response;
     }

@@ -4,7 +4,7 @@ namespace Application\Response;
 
 class Response
 {
-    public static function json($data)
+    public static function json($data, $status)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
             header('Access-Control-Allow-Origin: *');
@@ -18,6 +18,7 @@ class Response
 
         header('Access-Control-Allow-Origin: *');
         header('Content-Type: application/json');
+        http_response_code($status);
 
         echo json_encode($data);
     }
