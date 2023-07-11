@@ -96,6 +96,14 @@ Frontend
 http://localhost:3000
 ```
 
+Credenciais para que login que estão no dump-php_mvc-202307101345.sql dentro da pasta backend
+```bash
+{
+    "email": "jonhdoe@gmail.com",
+    "password": "123456"
+}
+```
+
 ## Funcionalidades
 
 O projeto possui diversas funcionalidades interessantes, incluindo:
