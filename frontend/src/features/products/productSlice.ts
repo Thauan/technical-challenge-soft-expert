@@ -8,13 +8,14 @@ export const productSlice = createSlice({
     },
     reducers: {
         onSuccessProducts: (state, action) => {
+            console.log(state, action);
             state.products = action.payload;
         },
         onErrorProducts: (state) => {
             state.error = true;
         },
         onUpdateListProducts: (state: any, action: any) => {
-            state.products = [...state, action.payload]
+            state.products = [...state.products, action.payload]
         }
     },
 });

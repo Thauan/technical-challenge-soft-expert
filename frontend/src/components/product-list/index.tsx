@@ -41,21 +41,22 @@ const ProductList: React.FC = () => {
 
   useQuery("products", getProducts, {
     onSuccess: (response) => {
+      console.log(response?.data?.products);
       dispatch(onSuccessProducts(response.data.products));
     }
   });
 
   return (
-    <div style={{ height: 400, width: '100%', padding: 20 }}>
+    <div style={{ height: '100%', width: '100%', padding: 20 }}>
       <DataGrid
         rows={products}
         columns={columns}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 0, pageSize: 15 },
           },
         }}
-        pageSizeOptions={[5, 10]}
+        pageSizeOptions={[15, 25]}
         checkboxSelection
       />
     </div>

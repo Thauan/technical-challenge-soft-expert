@@ -46,15 +46,22 @@ class Product extends Model
   }
 
   public function create($attributes) {
+
     $date = date('d-m-y h:i:s');
+
+    $name = $attributes['name'];
+    $tax = $attributes['tax'];
+    $price = $attributes['price'];
+    $quantity = $attributes['quantity'];
+
 
     $insertQuery = $this->db->getPdo()->prepare(
         "INSERT INTO {$this->table} (name, tax, price, quantity, created)
         VALUES (
-            '{$attributes['name']}',
-            '{$attributes['tax']}',
-            '{$attributes['price']}',
-            '{$attributes['quantity']}',
+            '{$name}',
+            '{$tax}',
+            '{$price}',
+            '{$quantity}',
             '{$date}'
         )"
     );
@@ -69,7 +76,7 @@ class Product extends Model
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $response['data'] = $result;
-        $response['status'] = 200;
+    $response['status'] = 200;
 
     return $response;
   }
